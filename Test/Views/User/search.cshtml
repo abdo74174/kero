@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ApplicationUserVM>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">User Management</h2>
+
+    <!-- Back Button -->
+    <div class="mb-3">
+        <a asp-controller="User" asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to Home
+        </a>
+    </div>
+
+    <!-- Search Form -->
+    <form asp-action="Index" method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="searchTerm" class="form-control" placeholder="Search users by name or email" value="@ViewBag.SearchTerm" />
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-search"></i> Search
+            </button>
+        </div>
+    </form>
+
+    <!-- Add User Button -->
+    <div class="mb-3">
+        <a asp-action="Add" class="btn btn-success">
+            <i class="bi bi-person-plus"></i> Add New User
+        </a>
+    </div>
+
+    <!-- Users Table -->
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>User Name</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@user.FullName</td>
+                        <td>@user.Email</td>
+                        <td>@string.Join(", ", user.Roles)</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton-@user.UserId"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    Actions
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton-@user.UserId">
+                                    <li>
+                                        <a class="dropdown-item" asp-action="Edit" asp-route-id="@user.UserId">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-danger" asp-action="Delete" asp-route-id="@user.UserId">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="User" asp-action="ManageRoles" asp-route-userId="@user.UserId">
+                                            <i class="bi bi-shield-lock"></i> Manage Roles
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="User" asp-action="AllUserOrders" asp-route-userId="@user.UserId">
+                                            <i class="bi bi-card-checklist"></i> User Orders
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center">No users available.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

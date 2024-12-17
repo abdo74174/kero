@@ -1,0 +1,141 @@
+﻿@{
+    double discountRate = 0;
+   
+    if (TempData["DiscountRate"] != null)
+    {
+        double.TryParse(TempData["DiscountRate"].ToString(), out discountRate);
+    }
+}
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-warning text-center mt-5" role="alert">
+        <h1 class="display-4 text-danger">No Items added to cart</h1>
+        <p class="lead text-muted">It looks like your shopping cart is empty. Start shopping now!</p>
+        <a href="/Home/Index" class="btn btn-primary btn-lg rounded-pill shadow">Continue Shopping</a>
+    </div>
+}
+else
+{
+    <form method="post">
+        <div class="card shadow border-0 mt-5" style="background-color: #f9f9fc; max-height: 70vh; overflow-y: auto;">
+            <div class="card-header bg-gradient d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, #6a11cb, #2575fc); color: white;">
+                <a href="/Home/Index" class="btn btn-outline-light shadow-lg rounded-pill px-3 py-1" style="background: linear-gradient(135deg, #2575fc, #6a11cb); color: white;">
+                    <i class="bi bi-arrow-left-circle" style="font-size: 1.5rem;"></i> Continue Shopping
+                </a>
+                <h5 class="pt-2 text-white mb-0"><i class="bi bi-cart3" style="font-size: 2rem;"></i> Shopping Cart</h5>
+            </div>
+            <div class="card-body py-4">
+                @foreach (var item in Model)
+                {
+                    <div class="row align-items-center border-bottom pb-3 mb-3">
+                        <div class="col-lg-2 text-center">
+                            <img src="~/images/@item.Product.ImageUrl" class="rounded shadow-lg" style="width: 80%; border: 5px solid #6a11cb;" />
+                        </div>
+                        <div class="col-lg-5">
+                            <h5 class="fw-bold" style="color: #2575fc;">@item.Product.Name</h5>
+                            <p class="text-muted small">@item.Product.Description</p>
+                        </div>
+                        <div class="col-lg-5 d-flex justify-content-between align-items-center">
+                            <h6 class="fw-bold" style="color: #ff6f61;">
+                                @item.Product.Price.ToString("c") <span class="text-muted">x</span> @item.Count
+                            </h6>
+                            <div class="btn-group">
+                                <a href="/Cart/Increment?id=@item.ProductId" class="btn btn-outline-light rounded-circle shadow-sm" style="border-color: #6a11cb; background: #6a11cb; color: white;">
+                                    <i class="bi bi-plus" style="font-size: 1.5rem;"></i>
+                                </a>
+                                <span style="width: 10px;"></span>
+                                <a href="/Cart/Decrement?id=@item.ProductId" class="btn btn-outline-light rounded-circle shadow-sm" style="border-color: #ff6f61; background: #ff6f61; color: white;">
+                                    <i class="bi bi-dash" style="font-size: 1.5rem;"></i>
+                                </a>
+                            </div>
+                            <a href="/Cart/Delete?id=@item.ProductId" class="btn btn-danger rounded-circle shadow-lg" style="background: #e63946; color: white;">
+                                <i class="bi bi-trash" style="font-size: 1.5rem;"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="card-footer bg-gradient d-flex justify-content-between" style="background: linear-gradient(135deg, #6a11cb, #2575fc); color: white;">
+                <div class="row w-100">
+                    <!-- Coupon Input -->
+                    <div class="col-md-6">
+                        <input type="text" name="couponCode" class="form-control" placeholder="Enter Coupon Code" style="border-radius: 20px; padding: 10px; font-size: 1rem;" />
+                    </div>
+                    <!-- Apply Coupon Button -->
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-warning w-100" style="font-size: 1rem; border-radius: 20px; padding: 10px;">
+                            Apply Coupon
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Discount Message Section -->
+    @if (!string.IsNullOrEmpty(ViewBag.DiscountMessage))
+    {
+        <div class="row mt-3">
+            <div class="col-md-12 text-center">
+                <div class="alert alert-info rounded-pill">
+                    <strong>@ViewBag.DiscountMessage</strong>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Total Price Section -->
+    <div class="row mt-3 mb-4">
+        <div class="col-md-6 offset-md-3 text-center">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center" style="background: rgba(255, 255, 255, 0.9); border-left: 5px solid #6a11cb;">
+                    <span class="text-uppercase text-dark fw-bold">Total:</span>
+                    <span class="fw-bold text-danger">@ViewBag.Total</span>
+                </li>
+                @if (!string.IsNullOrEmpty(ViewBag.DiscountMessage))
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="background: rgba(255, 255, 255, 0.9); border-left: 5px solid #ff6f61;">
+                        <span class="text-uppercase text-dark fw-bold">Discounted Total:</span>
+                        <span class="fw-bold text-success">@ViewBag.DiscountedTotal</span>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <!-- Payment Method Selection -->
+    <div class="row mt-3">
+        <div class="col-md-6 offset-md-3 text-center">
+            <h5>Select Payment Method</h5>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary" id="cashPayment">Cash</button>
+                <button type="button" class="btn btn-outline-success" id="visaPayment">Visa</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Method Action -->
+    <div class="row mt-3">
+        <div class="col-md-4 offset-md-4 text-center">
+            <a id="continueButton" href="#" class="btn btn-primary shadow-lg w-100 py-1 rounded-pill" style="font-size: 1rem; padding: 8px 20px; display: none;">
+                <i class="bi bi-credit-card" style="font-size: 1.2rem;"></i> Continue
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("cashPayment").addEventListener("click", function () {
+            // Redirect to Checkout Success for Cash
+            document.getElementById("continueButton").href = '@Url.Action("CashSuccess", "Cart", new { couponCode = ViewBag.CouponCode })';
+            document.getElementById("continueButton").style.display = 'block';
+        });
+
+        document.getElementById("visaPayment").addEventListener("click", function () {
+            // Redirect to Pay for Visa
+            document.getElementById("continueButton").href = '@Url.Action("Pay", "Cart", new { couponCode = ViewBag.CouponCode })';
+            document.getElementById("continueButton").style.display = 'block';
+        });
+    </script>
+}

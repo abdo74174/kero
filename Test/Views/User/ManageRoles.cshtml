@@ -1,0 +1,38 @@
+﻿@model UserRolesVM
+
+@{
+    ViewData["Title"] = "Manage Roles";
+}
+
+<!-- Back Button -->
+<a href="@Url.Action("Index", "User")" class="btn btn-info mb-4">
+    <i class="bi bi-arrow-left"></i> Back to User List
+</a>
+
+<form method="post">
+    <div class="card mt-4 shadow-lg" style="border-radius: 15px; background-color: #ffffff;">
+        <div class="card-header" style="background-color: #007bff; color: white; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+            <h3 class="mb-0">@Model.UserName</h3>
+            <p class="mb-0">Assign or Remove Roles for the User</p>
+        </div>
+        <div class="card-body">
+            <input type="hidden" asp-for="UserId" />
+            @for (int i = 0; i < Model.Roles.Count; i++)
+            {
+                <div class="form-check mb-3">
+                    <input asp-for="Roles[i].IsSelected" type="checkbox" class="form-check-input" id="role-@i" />
+                    <label for="role-@i" class="form-check-label" style="font-weight: 500; color: #555;">
+                        @Model.Roles[i].RoleName
+                    </label>
+                    <input asp-for="Roles[i].RoleName" type="hidden" />
+                </div>
+            }
+        </div>
+        <div class="card-footer text-end" style="background-color: #f8f9fa; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+            <button type="submit" class="btn btn-primary btn-lg">
+                Save Changes <i class="bi bi-check-lg"></i>
+            </button>
+        </div>
+    </div>
+</form>
+

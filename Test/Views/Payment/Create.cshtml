@@ -1,0 +1,41 @@
+﻿@model Payment
+<div class="container" style="max-width: 600px; margin: 20px auto;">
+    <form asp-action="Create" method="post" style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <div class="form-group" style="margin-bottom: 15px;">
+            <input type="hidden" class="form-control" id="OrderId" name="OrderId" value="@Model.OrderId" />
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="PaymentMethod" style="font-weight: bold; color: #333;">Payment Method</label>
+            <input type="text" class="form-control" id="PaymentMethod" name="PaymentMethod" value="Stripe" required style="margin-top: 5px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; color: #007bff;" />
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="Amount" style="font-weight: bold; color: #333;">Amount</label>
+            <input type="number" class="form-control" id="Amount" name="Amount" value="ali kjoi" required style="margin-top: 5px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; color: #007bff;" />
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="PaymentDate" style="font-weight: bold; color: #333;">Payment Date</label>
+            <input type="date" class="form-control" id="PaymentDate" name="PaymentDate" value="ali" required style="margin-top: 5px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; color: #007bff;" />
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="PaymentStatus" style="font-weight: bold; color: #333;">Payment Status</label>
+            <select name="paymentStatus" id="PaymentStatus" style="margin-top: 5px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; width: 100%; color: #007bff;">
+                   @{
+                var paymentStatuses = ViewBag.PaymentStatus as List<PaymentStatus>;
+                }
+
+                @foreach (var status in paymentStatuses)
+                {
+                <option value="@status">@status</option>
+                } 
+            </select>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+            <button type="submit" class="btn btn-success" style="background-color: #28a745; border: none; padding: 10px 20px; font-size: 16px; border-radius: 4px;">Save</button>
+        </div>
+    </form>
+</div>

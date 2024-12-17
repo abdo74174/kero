@@ -1,0 +1,40 @@
+﻿@model IEnumerable<OrderItem>
+@{
+    ViewData["Title"] = "Order Items";
+}
+
+<div class="container mt-5" style="background-color: #f9f9f9; padding: 20px; border-radius: 10px;">
+    <h2 class="text-center mb-4" style="color: #5a5a5a;">Order Items</h2>
+    <a href="/OrderItem/Create" class="btn btn-primary mb-3">Create New</a>
+
+    <table class="table table-striped table-bordered" style="border: 2px solid #007bff;">
+        <thead class="table-dark">
+            <tr>
+                <th style="background-color: #007bff; color: white;">#</th>
+                <th style="background-color: #007bff; color: white;">Order #</th>
+                <th style="background-color: #007bff; color: white;">Product Name</th>
+                <th style="background-color: #007bff; color: white;">Quantity</th>
+                <th style="background-color: #007bff; color: white;">Unit Price</th>
+                <th style="background-color: #007bff; color: white;">Total Amount</th>
+                <th style="background-color: #007bff; color: white;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Order.Id</td>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>$@item.UnitPrice</td>
+                    <td>$@(@item.Quantity * @item.UnitPrice)</td>
+                    <td>
+                        <a href="/OrderItem/Edit/@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/OrderItem/Delete/@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

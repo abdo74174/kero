@@ -1,0 +1,204 @@
+﻿@model List<Order>
+
+@{
+    ViewBag.Title = "Orders List";
+}
+
+<h2 class="text-center mt-3 text-primary">Order List</h2>
+
+<!-- Back to Home Button -->
+<div class="mb-4">
+    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary btn-sm">
+        <i class="fa fa-home"></i> Back to Home
+    </a>
+</div>
+
+<!-- Status Filter and Search -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <!-- Status Filters -->
+    <div class="d-flex gap-2">
+        @foreach (var status in new[] { "All", "Approved", "Pending", "Canceled", "Delivered" })
+
+        {
+            <a class="btn @(ViewBag.SelectedStatus == status ? "btn-dark" : "btn-outline-dark") btn-sm px-3 py-2"
+               href="@Url.Action("Index", "Order", new { status = status, page = 1, pageSize = ViewBag.PageSize, searchTerm = ViewBag.SearchTerm })">
+                @status
+            </a>
+        }
+    </div>
+    <!-- Search Bar -->
+    <form class="d-flex" method="get" action="@Url.Action("Index", "Order")">
+        <input type="hidden" name="status" value="@ViewBag.SelectedStatus" />
+        <input type="hidden" name="page" value="1" />
+        <input type="hidden" name="pageSize" value="@ViewBag.PageSize" />
+        <input type="text" name="searchTerm" class="form-control form-control-sm me-2"
+               placeholder="Search orders..." />
+        <button type="submit" class="btn btn-primary btn-sm">Search</button>
+    </form>
+</div>
+
+<!-- Orders Table -->
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead class="bg-secondary text-white">
+            <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Status</th>
+                <th>Total Amount</th>
+                <th>Order Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="6" class="text-center text-danger">No orders found.</td>
+                </tr>
+            }
+            else
+            {
+
+                foreach (var order in Model)
+
+                {
+                    <tr>
+                        <td>@order.Id</td>
+                        <td>@(!string.IsNullOrWhiteSpace(order.User?.FullName) ? order.User.FullName : "N/A")</td>
+                        <td>
+                            <span class="badge @(GetStatusBadgeClass(order.Status))">
+                                @order.Status
+                            </span>
+                        </td>
+                        <td>@order.TotalAmount.ToString("C")</td>
+                        <td>@order.OrderDate</td>
+                        <td>
+                            <!-- View Order Details -->
+                            <a href="@Url.Action("Details", "Order", new { id = order.Id })" class="btn btn-info btn-sm">
+                                <i class="fa fa-info-circle"></i> Details
+                            </a>
+
+                            <!-- Edit Order -->
+                            <a href="@Url.Action("Edit", "Order", new { id = order.Id })" class="btn btn-warning btn-sm ms-2">
+                                <i class="fa fa-edit"></i> Edit
+                            </a>
+
+                            <!-- Delete Order -->
+                            <a href="@Url.Action("Delete", "Order", new { id = order.Id })" class="btn btn-danger btn-sm ms-2"
+                               onclick="return confirm('Are you sure you want to delete this order?');">
+                                <i class="fa fa-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination -->
+<div class="d-flex justify-content-center mt-4">
+    <ul class="pagination">
+        @if (ViewBag.Page > 1)
+
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", "Order", new { status = ViewBag.SelectedStatus, page = ViewBag.Page - 1, pageSize = ViewBag.PageSize, searchTerm = ViewBag.SearchTerm })">Previous</a>
+            </li>
+        }
+        @for (var i = 1; i <= ViewBag.TotalPages; i++)
+
+        {
+            <li class="page-item @(i == ViewBag.Page ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", "Order", new { status = ViewBag.SelectedStatus, page = i, pageSize = ViewBag.PageSize, searchTerm = ViewBag.SearchTerm })">@i</a>
+            </li>
+        }
+        @if (ViewBag.Page < ViewBag.TotalPages)
+
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", "Order", new { status = ViewBag.SelectedStatus, page = ViewBag.Page + 1, pageSize = ViewBag.PageSize, searchTerm = ViewBag.SearchTerm })">Next</a>
+            </li>
+        }
+    </ul>
+</div>
+
+<!-- Custom Styling for Status Badges -->
+<style>
+    .badge-success {
+        background-color: #28a745;
+    }
+
+    .badge-pending {
+        background-color: #ffc107;
+    }
+
+    .badge-cancelled {
+        background-color: #dc3545;
+    }
+
+    .badge-info {
+        background-color: #17a2b8;
+    }
+
+    .btn-dark {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .btn-outline-dark {
+        border-color: #343a40;
+        color: #343a40;
+    }
+
+        .btn-outline-dark:hover {
+            background-color: #343a40;
+            color: white;
+        }
+
+    .pagination {
+        margin-top: 20px;
+    }
+
+        .pagination .page-item.active .page-link {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+</style>
+
+<!-- C# Helper Function for Status Badge -->
+@functions {
+    private string GetStatusBadgeClass(Models.OrderStatus status)
+
+    {
+
+        switch (status)
+
+        {
+
+            case Models.OrderStatus.Approved:
+
+                return "badge-success";
+
+            case Models.OrderStatus.Pending:
+
+                return "badge-pending";
+
+            case Models.OrderStatus.Canceled:
+
+                return "badge-cancelled";
+
+            case Models.OrderStatus.Delivered:
+
+                return "badge-info";
+
+            default:
+
+                return "badge-dark";
+
+        }
+
+    }
+}

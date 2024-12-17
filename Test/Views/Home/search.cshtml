@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Product>
+
+<h2 >Search Result</h2>
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4">
+                <div class="card" style="height: 100%">
+                    <img src="~/Images/@(string.IsNullOrEmpty(product.ImageUrl) ? "placeholder.jpg" : product.ImageUrl)" alt="@product.Name" class="product-image">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@product.Description</p>
+                        <p><strong>Price:</strong> @product.Price.ToString("C")</p>
+                        <p><strong>Rating:</strong> @product.Rating</p>
+                        <input type="checkbox" class="compare-checkbox" data-product-id="@product.Id" id="compare-@product.Id" />
+                        <label for="compare-@product.Id">Compare</label>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <button id="compare-button" style="display: none;" class="btn btn-primary mt-3" onclick="compareProducts()">Compare</button>
+}
+else
+{
+    <p>No products available for comparison.</p>
+}
+
+<script>
+    let selectedProducts = [];
+
+    // Track selections
+    document.querySelectorAll('.compare-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+            const productId = this.getAttribute('data-product-id');
+            if (this.checked) {
+                selectedProducts.push(productId);
+            } else {
+                selectedProducts = selectedProducts.filter(id => id !== productId);
+            }
+
+            // Show the "Compare" button if two or more products are selected
+            const compareButton = document.getElementById('compare-button');
+            if (selectedProducts.length >= 2) {
+                compareButton.style.display = 'block';
+            } else {
+                compareButton.style.display = 'none';
+            }
+        });
+    });
+
+    // Handle the comparison action
+    function compareProducts() {
+        if (selectedProducts.length >= 2) {
+            const productIds = selectedProducts.join(',');
+            console.log('Redirecting with product IDs: ', productIds);  // Check if IDs are correct
+
+            // Redirect to the comparison page with selected products' IDs
+            window.location.href = '@Url.Action("Compare", "Home")?ids=' + productIds;
+        }
+    }
+</script>
+
+<style>
+    .product-image {
+        width: 100%; /* Make the image fill the card width */
+        height: 200px; /* Fixed height for the image */
+        object-fit: contain; /* Ensure the image is contained within the dimensions without cutting */
+        background-color: #f8f9fa; /* Optional: a light background for transparency effect */
+    }
+
+    .card {
+        margin-bottom: 15px;
+        height: 100%; /* Allow the card to take full height within its parent */
+        display: flex;
+        flex-direction: column;
+    }
+
+    #compare-button {
+        display: none;
+    }
+
+    .card-body {
+        padding: 10px;
+        flex-grow: 1; /* Ensure the card body takes available space without affecting the image size */
+    }
+
+        .card-body label {
+            cursor: pointer;
+        }
+</style>

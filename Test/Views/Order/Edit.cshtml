@@ -1,0 +1,161 @@
+﻿@model Order
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Edit Order</h1>
+
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <form asp-action="Edit" method="post" class="needs-validation" novalidate>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="UserId" />
+
+                <!-- Order Date -->
+                <div class="mb-4">
+                    <label asp-for="OrderDate" class="form-label fw-semibold">Order Date</label>
+                    <input asp-for="OrderDate" class="form-control" type="datetime-local" id="orderDate" required />
+                    <span asp-validation-for="OrderDate" class="text-danger small"></span>
+                </div>
+
+                <!-- Total Amount -->
+                <div class="mb-4">
+                    <label asp-for="TotalAmount" class="form-label fw-semibold">Total Amount</label>
+                    <input asp-for="TotalAmount" class="form-control" placeholder="Enter total amount" required />
+                    <span asp-validation-for="TotalAmount" class="text-danger small"></span>
+                </div>
+
+                <!-- Status -->
+                <div class="mb-4">
+                    <label asp-for="Status" class="form-label fw-semibold">Status</label>
+                    <select asp-for="Status" class="form-select" asp-items="Html.GetEnumSelectList<OrderStatus>()" required>
+                        <option value="">-- Select Status --</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger small"></span>
+                </div>
+
+                <!-- Shipping Address -->
+                <div class="mb-4">
+                    <label asp-for="ShippingAddress" class="form-label fw-semibold">Shipping Address</label>
+                    <textarea asp-for="ShippingAddress" class="form-control" rows="4" placeholder="Enter shipping address" required></textarea>
+                    <span asp-validation-for="ShippingAddress" class="text-danger small"></span>
+                </div>
+
+                <!-- Payment Details -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Payment Status</label>
+                    <input asp-for="Payment.Status" class="form-control" value="@Model.Payment.Status" disabled />
+                    <span asp-validation-for="Payment" class="text-danger small"></span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-end mt-4">
+                    <button type="submit" class="btn btn-primary me-2">Save</button>
+                    <a href="@Url.Action("Index", "Order")" class="btn btn-secondary">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 800px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #333;
+    }
+
+    .card {
+        border-radius: 12px;
+        border: none;
+        background-color: #f8f9fa;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 2rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+    .form-label {
+        color: #555;
+        font-weight: 600;
+    }
+
+    .form-select, .form-control {
+        border-radius: 8px;
+        border-color: #ced4da;
+    }
+
+        .form-select:focus, .form-control:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.5);
+        }
+
+    .text-danger {
+        font-size: 0.875rem;
+    }
+
+    .mb-4 {
+        margin-bottom: 1.5rem;
+    }
+
+    textarea.form-control {
+        resize: none;
+    }
+
+    .d-flex {
+        justify-content: flex-end;
+    }
+
+    /* Validation feedback */
+    .is-invalid {
+        border-color: #dc3545;
+    }
+
+    .is-valid {
+        border-color: #28a745;
+    }
+
+    .needs-validation .form-control:invalid {
+        border-color: #dc3545;
+    }
+
+    .needs-validation .form-control:valid {
+        border-color: #28a745;
+    }
+</style>
+
+<script>
+    // Set the current date and time as the minimum value for the Order Date input field
+    document.addEventListener("DOMContentLoaded", function () {
+        var orderDateInput = document.getElementById('orderDate');
+        var currentDate = new Date().toISOString().slice(0, 16); // Format to 'yyyy-mm-ddThh:mm'
+        orderDateInput.setAttribute('min', currentDate);
+    });
+</script>

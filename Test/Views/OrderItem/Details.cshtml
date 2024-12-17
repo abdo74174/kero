@@ -1,0 +1,19 @@
+﻿@model OrderItem
+@{
+    ViewData["Title"] = "Order Item Details";
+}
+
+<div class="container mt-5" style="background-color: #f9f9f9; padding: 20px; border-radius: 10px;">
+    <h2 class="text-center mb-4" style="color: #5a5a5a;">Order Item Details</h2>
+
+    <div class="card" style="border: 2px solid #17a2b8;">
+        <div class="card-body" style="background-color: #e9f7fb;">
+            <h5 class="card-title" style="color: #17a2b8;">Order Item #@Model.Id</h5>
+            <p class="card-text">Order Id: @Model.OrderId</p>
+            <p class="card-text">Product Id: @Model.ProductId</p>
+            <p class="card-text">Quantity: @Model.Quantity</p>
+            <p class="card-text">Unit Price: @Model.UnitPrice</p>
+            <a href="/OrderItem" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

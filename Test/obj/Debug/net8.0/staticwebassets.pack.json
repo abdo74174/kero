@@ -1,0 +1,341 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Test.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Test.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\0163164d-91bb-4a38-a8cb-0fbb7a899de6.jpg",
+      "PackagePath": "staticwebassets\\Images\\0163164d-91bb-4a38-a8cb-0fbb7a899de6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\48312f1d-b61a-4748-a1ba-d8c669592d7a.png",
+      "PackagePath": "staticwebassets\\Images\\48312f1d-b61a-4748-a1ba-d8c669592d7a.png"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\50e05065-b1f7-4107-b509-a4c931d476e5.jpg",
+      "PackagePath": "staticwebassets\\Images\\50e05065-b1f7-4107-b509-a4c931d476e5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\57ca0df2-d605-4e48-aa70-ec11c4f7918f.jpg",
+      "PackagePath": "staticwebassets\\Images\\57ca0df2-d605-4e48-aa70-ec11c4f7918f.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\71a94142-0044-4cd3-a125-15d60b28058d.jpeg",
+      "PackagePath": "staticwebassets\\Images\\71a94142-0044-4cd3-a125-15d60b28058d.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\73fd3f2e-7c2d-4c04-b483-5d57840101a2.jpg",
+      "PackagePath": "staticwebassets\\Images\\73fd3f2e-7c2d-4c04-b483-5d57840101a2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\7d7292ca-6f93-4694-969f-d1ea6d5b00bb.jpeg",
+      "PackagePath": "staticwebassets\\Images\\7d7292ca-6f93-4694-969f-d1ea6d5b00bb.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\812c8699-63ec-4794-ab5c-d05ee22605e2.jpg",
+      "PackagePath": "staticwebassets\\Images\\812c8699-63ec-4794-ab5c-d05ee22605e2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\9ffaa1cb-829a-42c9-bd95-8f83b2211bc6.jpg",
+      "PackagePath": "staticwebassets\\Images\\9ffaa1cb-829a-42c9-bd95-8f83b2211bc6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\a258b3d9-b706-4fd6-8ef1-15feb55c8f15.jpg",
+      "PackagePath": "staticwebassets\\Images\\a258b3d9-b706-4fd6-8ef1-15feb55c8f15.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\a4e8e8bf-944f-4308-a4f9-371cd8947d24.jpg",
+      "PackagePath": "staticwebassets\\Images\\a4e8e8bf-944f-4308-a4f9-371cd8947d24.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\a7fd877d-8709-4b1f-98bb-29400f76973a.jpg",
+      "PackagePath": "staticwebassets\\Images\\a7fd877d-8709-4b1f-98bb-29400f76973a.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\download (4).png",
+      "PackagePath": "staticwebassets\\Images\\download (4).png"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\e45a844f-4572-4fb9-ba6a-5a9444701081.jpg",
+      "PackagePath": "staticwebassets\\Images\\e45a844f-4572-4fb9-ba6a-5a9444701081.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\f11a51f5-b6f8-40e4-9a85-fc9fea5495c8.jpg",
+      "PackagePath": "staticwebassets\\Images\\f11a51f5-b6f8-40e4-9a85-fc9fea5495c8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\f723baa2-404d-4af7-8fb1-d548d16d6774.jpg",
+      "PackagePath": "staticwebassets\\Images\\f723baa2-404d-4af7-8fb1-d548d16d6774.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\fe69ed88-ae77-47f9-9a5f-d6e7c1a891ec.jpg",
+      "PackagePath": "staticwebassets\\Images\\fe69ed88-ae77-47f9-9a5f-d6e7c1a891ec.jpg"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Images\\static\\download.png",
+      "PackagePath": "staticwebassets\\Images\\static\\download.png"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\Rotavia\\wkhtmltopdf.exe",
+      "PackagePath": "staticwebassets\\Rotavia\\wkhtmltopdf.exe"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\abdo os\\Downloads\\Test\\Test\\Test\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Test.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Test.props",
+      "PackagePath": "build\\Test.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Test.props",
+      "PackagePath": "buildMultiTargeting\\Test.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Test.props",
+      "PackagePath": "buildTransitive\\Test.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

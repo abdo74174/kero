@@ -1,0 +1,70 @@
+﻿@model Discount
+
+@{
+    ViewData["Title"] = "Discount Details";
+}
+
+<style>
+    body {
+        background-color: #f4f7fc;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+    }
+
+    h1 {
+        color: #3e64a5;
+        font-size: 32px;
+    }
+
+    .btn {
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: #5e72e4;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #4e61c1;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container mt-5">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+    <div class="card mt-3">
+        <div class="card-body">
+            <h4 class="card-title">@Model.Name</h4>
+            <p><strong>Discount Rate:</strong> @Model.DiscountRate%</p>
+            <p><strong>Start Date:</strong> @Model.StartDate.ToString("MM/dd/yyyy")</p>
+            <p><strong>End Date:</strong> @Model.EndDate.ToString("MM/dd/yyyy")</p>
+
+            <!-- Back to List Button -->
+            <a href="@Url.Action("Index", "Discount")" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

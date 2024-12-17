@@ -1,0 +1,207 @@
+﻿@model IEnumerable<Payment>
+
+@{
+    ViewData["Title"] = "Payments";
+    var statuses = Enum.GetNames(typeof(PaymentStatus)).Concat(new[] { "All" });
+}
+
+<div class="container mt-5">
+    <!-- Page Title -->
+    <h1 class="text-center text-primary">@ViewData["Title"]</h1>
+
+    <!-- Back Button -->
+    <div class="mb-4">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-secondary btn-sm">
+            <i class="fa fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
+
+    <!-- Search Form -->
+    <form method="get" class="mb-4">
+        <div class="d-flex justify-content-start gap-2">
+            <input type="text" name="search" class="form-control" placeholder="Search by Order ID or Customer" />
+            <button type="submit" class="btn btn-dark btn-sm px-4 py-2">Search</button>
+        </div>
+    </form>
+
+    <!-- Status Filter Buttons -->
+    <div class="d-flex justify-content-start flex-wrap my-4 gap-2">
+        @foreach (var status in statuses)
+        {
+            <a class="btn @(ViewBag.SelectedStatus == status ? "btn-dark" : "btn-outline-dark") btn-sm px-4 py-2"
+               href="@Url.Action("Index", "Payment", new { status = status, search = ViewBag.Search })">
+                @status
+            </a>
+        }
+    </div>
+
+    <!-- Payments Table -->
+    <div class="card shadow">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center text-danger">No payments found.</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var payment in Model)
+                        {
+                            <tr>
+                                <td>@payment.Order.Id</td>
+                                <td>@(!string.IsNullOrWhiteSpace(payment.Order.User?.FullName) ? payment.Order.User.FullName : "N/A")</td>
+                                <td>@payment.PaymentDate.ToString("dd MMM yyyy")</td>
+                                <td>@payment.Amount.ToString("C")</td>
+                                <td>
+                                    <span class="badge
+                                        @(payment.Status == PaymentStatus.success ? "badge-success" :
+                                          payment.Status == PaymentStatus.cancelled ? "badge-danger" :
+                                          "badge-warning")">
+                                        @payment.Status
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("PaymentDetails", new { id = payment.OrderId })" class="btn btn-info btn-sm">
+                                        <i class="fa fa-info-circle"></i> Details
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Pagination Controls -->
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(ViewBag.Page == 1 ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { status = ViewBag.SelectedStatus, search = ViewBag.Search, page = ViewBag.Page - 1, pageSize = ViewBag.PageSize })" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @for (var i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(ViewBag.Page == i ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { status = ViewBag.SelectedStatus, search = ViewBag.Search, page = i, pageSize = ViewBag.PageSize })">
+                        @i
+                    </a>
+                </li>
+            }
+            <li class="page-item @(ViewBag.Page == ViewBag.TotalPages ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { status = ViewBag.SelectedStatus, search = ViewBag.Search, page = ViewBag.Page + 1, pageSize = ViewBag.PageSize })" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Custom Styling -->
+<style>
+    /* General Styles */
+    h1 {
+        font-weight: bold;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+
+    /* Status Buttons */
+    .btn-dark, .btn-outline-dark {
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 0; /* Removed circular shape */
+        transition: all 0.3s ease;
+    }
+
+        .btn-dark:hover {
+            background-color: #343a40;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    .btn-outline-dark {
+        color: #343a40;
+        border: 2px solid #343a40;
+    }
+
+        .btn-outline-dark:hover {
+            background-color: #343a40;
+            color: white;
+        }
+
+    .d-flex {
+        gap: 10px;
+        justify-content: flex-start;
+    }
+
+    /* Table and Card Styling */
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        text-align: center;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .bg-dark {
+        background-color: #343a40 !important;
+    }
+
+    .badge-success {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .badge-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .badge-warning {
+        background-color: #ffc107;
+        color: black;
+    }
+
+    .btn-sm i {
+        margin-right: 5px;
+    }
+
+    /* Pagination Styling */
+    .pagination .page-item.active .page-link {
+        background-color: #343a40;
+        border-color: #343a40;
+    }
+
+    .pagination .page-link {
+        color: #343a40;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        .pagination .page-link:hover {
+            background-color: #343a40;
+            color: white;
+        }
+</style>

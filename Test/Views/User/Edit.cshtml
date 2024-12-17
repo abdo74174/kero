@@ -1,0 +1,79 @@
+﻿@model Models.ViewModel.ProfileViewModel
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary">Edit User Profile</h2>
+        <a asp-controller="User" asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-arrow-left-circle"></i> Back to User List
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-action="Edit" method="post" class="needs-validation" novalidate>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="UserName" class="form-label text-dark fw-bold">Username</label>
+                        <input asp-for="UserName" class="form-control" placeholder="Enter username" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="FullName" class="form-label text-dark fw-bold">Full Name</label>
+                        <input asp-for="FullName" class="form-control" placeholder="Enter full name" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label text-dark fw-bold">Email</label>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="Enter email address" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Address" class="form-label text-dark fw-bold">Address</label>
+                        <input asp-for="Address" class="form-control" placeholder="Enter address" />
+                    </div>
+                </div>
+
+                <h4 class="text-secondary mt-4">Manage Roles</h4>
+                <div class="mb-3">
+                    @for (int i = 0; i < Model.Roles.Count; i++)
+                    {
+                        <div class="form-check">
+                            <input asp-for="Roles[i].IsSelected" type="checkbox" class="form-check-input" id="role-@i" />
+                            <label for="role-@i" class="form-check-label">@Model.Roles[i].RoleName</label>
+                            <input asp-for="Roles[i].RoleName" type="hidden" />
+                        </div>
+                    }
+                </div>
+
+                <div class="d-flex justify-content-end mt-4">
+                    <button type="submit" class="btn btn-primary me-2">
+                        <i class="bi bi-check-circle"></i> Save Changes
+                    </button>
+                    <a asp-controller="User" asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-x-circle"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger mt-3">
+            <h5 class="alert-heading">Form Submission Errors</h5>
+            <ul>
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

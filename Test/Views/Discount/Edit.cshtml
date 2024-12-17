@@ -1,0 +1,110 @@
+﻿@model Discount
+
+@{
+    ViewData["Title"] = "Edit Discount";
+}
+
+<style>
+    body {
+        background-color: #f4f7fc;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h1 {
+        color: #3e64a5;
+        font-size: 32px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .btn {
+        border-radius: 20px;
+        padding: 12px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .btn-success {
+        background-color: #2dce89;
+        border: none;
+        color: #fff;
+    }
+
+        .btn-success:hover {
+            background-color: #1d9e74;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        color: #fff;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        border-radius: 20px;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .form-label {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .form-control:focus {
+        border-color: #5e72e4;
+        box-shadow: 0 0 5px rgba(94, 114, 228, 0.5);
+    }
+</style>
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <form asp-action="Edit" method="post">
+        <div class="form-group">
+            <label for="Name" class="form-label">Discount Name</label>
+            <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" required />
+        </div>
+        <div class="form-group">
+            <label for="DiscountRate" class="form-label">Discount Rate (%)</label>
+            <input type="number" class="form-control" id="DiscountRate" name="DiscountRate" value="@Model.DiscountRate" required min="0" max="100" />
+        </div>
+        <div class="form-group">
+            <label for="StartDate" class="form-label">Start Date</label>
+            <input type="date" class="form-control" id="StartDate" name="StartDate" value="@Model.StartDate.ToString("yyyy-MM-dd")" required min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="form-group">
+            <label for="EndDate" class="form-label">End Date</label>
+            <input type="date" class="form-control" id="EndDate" name="EndDate" value="@Model.EndDate.ToString("yyyy-MM-dd")" required min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="form-group">
+            <label for="CouponCounter" class="form-label">Usage Limit</label>
+            <input type="number" class="form-control" id="CouponCounter" name="CouponCounter" value="@Model.CouponCounter" required min="1" />
+        </div>
+
+        <button type="submit" class="btn btn-success">Edit Discount</button>
+    </form>
+
+    <!-- Back to List Button -->
+    <a href="@Url.Action("Index", "Discount")" class="btn btn-secondary mt-3">Back to List</a>
+</div>

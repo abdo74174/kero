@@ -1,0 +1,139 @@
+﻿@model Payment
+
+@{
+    ViewData["Title"] = "Edit Payment";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Edit Payment</h2>
+    <form asp-action="Edit" method="post" class="needs-validation" novalidate>
+        <input asp-for="OrderId" type="hidden" />
+
+        <!-- Payment Date -->
+        <div class="mb-4">
+            <label asp-for="PaymentDate" class="form-label fw-semibold">Payment Date</label>
+            <input asp-for="PaymentDate" class="form-control" type="datetime-local" required />
+            <span asp-validation-for="PaymentDate" class="text-danger small"></span>
+        </div>
+
+        <!-- Amount -->
+        <div class="mb-4">
+            <label asp-for="Amount" class="form-label fw-semibold">Amount</label>
+            <input asp-for="Amount" class="form-control" placeholder="Enter amount" required />
+            <span asp-validation-for="Amount" class="text-danger small"></span>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="mb-4">
+            <label asp-for="PaymentMethod" class="form-label fw-semibold">Payment Method</label>
+            <input asp-for="PaymentMethod" class="form-control" placeholder="Enter payment method" required />
+            <span asp-validation-for="PaymentMethod" class="text-danger small"></span>
+        </div>
+
+        <!-- Status -->
+        <div class="mb-4">
+            <label asp-for="Status" class="form-label fw-semibold">Payment Status</label>
+            <select asp-for="Status" class="form-select" required>
+                <option value="0">Success</option>
+                <option value="1">Cancelled</option>
+                <option value="2">Pending</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger small"></span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="btn btn-primary me-2">Save</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .container {
+        max-width: 600px;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: #333;
+    }
+
+    .form-label {
+        color: #555;
+        font-weight: 600;
+    }
+
+    .form-control, .form-select {
+        border-radius: 8px;
+        border-color: #ced4da;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #80bdff;
+        box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.5);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 0.5rem 1.25rem;
+        font-size: 1.1rem;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        padding: 0.5rem 1.25rem;
+        font-size: 1.1rem;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    .mb-4 {
+        margin-bottom: 1.5rem;
+    }
+
+    .text-danger {
+        font-size: 0.875rem;
+    }
+
+    .needs-validation .form-control:invalid {
+        border-color: #dc3545;
+    }
+
+    .needs-validation .form-control:valid {
+        border-color: #28a745;
+    }
+
+    /* Validation feedback */
+    .is-invalid {
+        border-color: #dc3545;
+    }
+
+    .is-valid {
+        border-color: #28a745;
+    }
+
+    .needs-validation .form-control:invalid {
+        border-color: #dc3545;
+    }
+
+    .needs-validation .form-control:valid {
+        border-color: #28a745;
+    }
+</style>
+
+<script>
+    // Optional: Any JavaScript validation or functionality you want to add
+</script>

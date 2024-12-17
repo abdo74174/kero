@@ -1,0 +1,175 @@
+﻿@model IEnumerable<Product>
+
+<h2>Product List</h2>
+
+<!-- Search Bar with Filters -->
+<div class="mb-4 d-flex justify-content-between">
+    <form asp-action="Search" method="get" class="flex-grow-1 me-3">
+        <div class="row g-2">
+            <div class="col-md-3">
+                <input type="text" name="query" class="form-control" placeholder="Search by Name, Category, Description" value="@ViewData["SearchQuery"]">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="minPrice" class="form-control" placeholder="Min Price" step="0.01" value="@ViewData["MinPrice"]">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="maxPrice" class="form-control" placeholder="Max Price" step="0.01" value="@ViewData["MaxPrice"]">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="minRate" class="form-control" placeholder="Min Rating" value="@ViewData["MinRate"]">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="maxRate" class="form-control" placeholder="Max Rating" value="@ViewData["MaxRate"]">
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary w-100">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Product Cards -->
+<div class="row">
+    @foreach (var product in Model)
+    {
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <!-- Product Image -->
+                    <img src="~/Images/@(string.IsNullOrEmpty(product.ImageUrl) ? "placeholder.jpg" : product.ImageUrl)"
+                         class="card-img-top product-image"
+                         alt="@product.Name"
+                         loading="lazy">
+
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name
+                        @if (product.IsBestSeller)
+                        {
+                                    <span class="badge bg-success ms-2">Best Seller</span>
+                        }
+                        </h5>
+                        <p class="card-text text-truncate">@product.Description</p>
+                        <p class="card-text"><strong>Price:</strong> @product.Price.ToString("C")</p>
+                        <p class="card-text"><strong>Rating:</strong> @product.Rating</p>
+
+                        <p class="card-text">
+                            <strong>Availability:</strong>
+                        @if (product.Stock > 0)
+                        {
+                                    <span class="text-success">@product.Stock available</span>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <a href="/product/details/@product.Id" class="btn btn-primary">Details</a>
+                                    </div>
+                        }
+                        else
+                        {
+                                    <span class="badge bg-danger">Out of Stock</span>
+                        }
+                        </p>
+                        <p class="card-text"><strong>Sales Count:</strong> @product.SalesCount</p>
+                        <!-- Compare Checkbox -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="@product.Id" id="compare-@product.Id" name="selectedProducts">
+                            <label class="form-check-label" for="compare-@product.Id">Compare</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    }
+</div>
+
+<!-- Compare Button -->
+<div class="text-center mt-4">
+    <button class="btn btn-secondary" id="compareBtn">Compare Products</button>
+    <p id="compareMessage" class="text-danger mt-2" style="display:none;">Please select at least two products to compare.</p>
+</div>
+
+<!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center mt-4">
+        <!-- Previous Page Button -->
+        <li class="page-item @(ViewBag.Page == 1 ? "disabled" : "")">
+            <a class="page-link" href="/Home/Index?page=@(ViewBag.Page - 1)&pageSize=@ViewBag.PageSize">Previous</a>
+        </li>
+
+        <!-- Page Numbers -->
+        @for (var i = 1; i <= ViewBag.TotalPages; i++)
+        {
+                <li class="page-item @(ViewBag.Page == i ? "active" : "")">
+                    <a class="page-link" href="/Home/Index?page=@i&pageSize=@ViewBag.PageSize">@i</a>
+                </li>
+        }
+
+        <!-- Next Page Button -->
+        <li class="page-item @(ViewBag.Page == ViewBag.TotalPages ? "disabled" : "")">
+            <a class="page-link" href="/Home/Index?page=@(ViewBag.Page + 1)&pageSize=@ViewBag.PageSize">Next</a>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    .product-image {
+        width: 100%; /* Ensure the image fills the card width */
+        height: 250px; /* Set a consistent height for all images */
+        object-fit: contain; /* Ensures the image maintains aspect ratio without cutting */
+        background-color: #f8f9fa; /* Optional: a light background for transparency effect */
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .card-body {
+        flex-grow: 1;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+    }
+
+    .page-item .page-link {
+        color: #007bff;
+    }
+
+    .page-item.active .page-link {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .page-item.disabled .page-link {
+        color: #6c757d;
+        pointer-events: none;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const compareButton = document.getElementById('compareBtn');
+        const checkboxes = document.querySelectorAll('input[name="selectedProducts"]');
+        const compareMessage = document.getElementById('compareMessage');
+
+        compareButton.addEventListener("click", function (e) {
+            const selected = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+
+            // Show message if fewer than 2 products are selected
+            if (selected.length < 2) {
+                e.preventDefault(); // Prevent form submission
+                compareMessage.style.display = 'block'; // Show message
+            } else {
+                compareMessage.style.display = 'none'; // Hide message
+                // Proceed with the comparison logic (redirect to comparison page)
+                let selectedProductIds = selected.map(checkbox => checkbox.value);
+                window.location.href = '@Url.Action("Compare", "Home")' + '?ids=' + selectedProductIds.join(',');
+            }
+        });
+    });
+</script>

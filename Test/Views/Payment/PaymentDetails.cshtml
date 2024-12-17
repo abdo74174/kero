@@ -1,0 +1,96 @@
+﻿@model Payment
+@{
+    ViewData["Title"] = "Payment Details";
+}
+
+<style>
+    /* Set the background color for the body */
+    body {
+        background-color: #f4f6f9; /* Light Gray Background */
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /* Optional: Card Shadow and Rounded Edges */
+    .card {
+        background-color: #ffffff; /* White background for the card */
+        border-radius: 15px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background: linear-gradient(to right, #007bff, #00bcd4); /* Gradient blue-teal */
+    }
+
+    /* Text Colors for Headers and Body */
+    .text-dark {
+        color: #343a40;
+    }
+
+    .text-muted {
+        color: #6c757d;
+    }
+</style>
+
+<div class="container my-5">
+    <!-- Card for Payment Details -->
+    <div class="card shadow-lg border-0 rounded-lg">
+        <div class="card-header text-white text-center">
+            <h4 class="mb-0">Payment Information</h4>
+        </div>
+        <div class="card-body">
+
+            <!-- Grid layout for Payment Info -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <strong class="text-dark">Order ID</strong>
+                        <p class="text-muted fs-5">@Model.OrderId</p>
+                    </div>
+                    <div class="mb-3">
+                        <strong class="text-dark">Payment Method</strong>
+                        <p class="text-muted fs-5">@Model.PaymentMethod</p>
+                    </div>
+                    <div class="mb-3">
+                        <strong class="text-dark">Amount</strong>
+                        <p class="text-muted fs-5">$@Model.Amount</p>
+                    </div>
+                    <div class="mb-3">
+                        <strong class="text-dark">Payment Date</strong>
+                        <p class="text-muted fs-5">@Model.PaymentDate.ToString("MMMM dd, yyyy")</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <strong class="text-dark">Customer Name</strong>
+                        <p class="text-muted fs-5">@Model.Order.User.FullName</p>
+                    </div>
+                    <div class="mb-3">
+                        <strong class="text-dark">Customer Address</strong>
+                        <p class="text-muted fs-5">@Model.Order.User.Address</p>
+                    </div>
+                    <div class="mb-3">
+                        <strong class="text-dark">Shipping Address</strong>
+                        <p class="text-muted fs-5">@Model.Order.ShippingAddress</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong class="text-dark">Customer Phone</strong>
+                        <p class="text-muted fs-5">@Model.Order.User.PhoneNumber</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-outline-secondary btn-lg" onclick="window.location.href='@Url.Action("Index", "Payment")'">
+                    <i class="fas fa-arrow-left"></i> Back to Payment List
+                </button>
+                <button class="btn btn-outline-warning btn-lg" onclick="window.location.href='@Url.Action("Edit", new { id = Model.OrderId })'">
+                    <i class="fas fa-edit"></i> Edit Payment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

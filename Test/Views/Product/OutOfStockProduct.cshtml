@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Product>
+
+<h2>Out Of Stock Product List</h2>
+
+<!-- Search Bar -->
+<div class="mb-4 d-flex justify-content-between">
+    <form asp-action="Index" method="get" class="flex-grow-1 me-3">
+        <div class="input-group">
+            <input type="text" name="searchQuery" class="form-control" placeholder="Search products..." value="@ViewData["SearchQuery"]">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+   
+</div>
+
+<!-- Product Cards -->
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <!-- Product Image -->
+                <img src="~/Images/@(string.IsNullOrEmpty(product.ImageUrl) ? "placeholder.jpg" : product.ImageUrl)"
+                     class="card-img-top"
+                     alt="@product.Name"
+                     loading="lazy">
+
+                <!-- Card Body -->
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text text-truncate">@product.Description</p>
+                    <p class="card-text"><strong>Price:</strong> @product.Price.ToString("C")</p>
+                    <p class="card-text">
+                        <strong>Availability:</strong>
+                        @if (product.Stock > 0)
+                        {
+                            <span class="text-success">@product.Stock available</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Out of Stock</span>
+                        }
+                    </p>
+                    <p class="card-text"><strong>Rating:</strong> @product.Rating</p>
+
+                    <!-- Bestseller Badge -->
+                    @if (product.IsBestSeller)
+                    {
+                        <p class="card-text mt-2">
+                            <span class="badge bg-warning text-dark" style="font-size: 0.9rem;">Bestseller</span>
+                        </p>
+                    }
+
+                    <div class="d-flex justify-content-between mt-3">
+                        <a asp-action="Details" asp-route-id="@product.Id" class="btn btn-primary">Details</a>
+                        <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

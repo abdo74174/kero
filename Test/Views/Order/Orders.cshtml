@@ -1,0 +1,135 @@
+﻿@model IEnumerable<Models.Order>
+
+@{
+    ViewBag.Title = "Orders";
+    var statuses = Enum.GetNames(typeof(Models.OrderStatus)).Concat(new[] { "All" });
+}
+
+<h2 class="text-center mt-3">Order List</h2>
+
+<!-- Tabs for filtering -->
+<ul class="nav nav-tabs justify-content-center mb-4">
+    @foreach (var status in statuses)
+    {
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.SelectedStatus == status ? "active" : "")"
+               href="@Url.Action("Orders", "Order", new { status = status })">
+                @status
+            </a>
+        </li>
+    }
+</ul>
+
+<!-- Orders table -->
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Order Date</th>
+            <th>Total Amount</th>
+            <th>Status</th>
+            <th>Shipping Address</th>
+            <th>Discount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="8" class="text-center text-danger">No orders found for this status.</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.User?.UserName ?? "N/A"</td>
+                    <td>@order.OrderDate.ToString("MM/dd/yyyy")</td>
+                    <td>@order.TotalAmount.ToString("C")</td>
+                    <td>
+                        <span class="badge badge-dark">@order.Status</span>
+                    </td>
+                    <td>@order.ShippingAddress ?? "N/A"</td>
+                    <td>@order.Discount?.Name ?? "N/A"</td>
+                    <td>
+                        <a href="@Url.Action("Details", "Order", new { id = order.Id })" class="btn btn-info btn-sm">Details</a>
+                        <a href="@Url.Action("Edit", "Order", new { id = order.Id })" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="@Url.Action("Delete", "Order", new { id = order.Id })" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<style>
+    /* Tabs styles */
+    .nav-tabs .nav-link {
+        color: #333;
+        font-weight: bold;
+        border: 1px solid #ccc;
+        padding: 10px 15px;
+        margin-right: 2px;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+    }
+
+        .nav-tabs .nav-link.active {
+            background-color: #555;
+            color: white !important;
+            border-color: #555;
+        }
+
+    /* Table styles */
+    .table-bordered {
+        border: 1px solid #ddd;
+    }
+
+        .table-bordered th, .table-bordered td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 12px;
+        }
+
+    .table-hover tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .badge-dark {
+        background-color: #333;
+        color: white;
+        font-size: 90%;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .btn {
+        margin: 2px;
+        border-radius: 3px;
+    }
+
+    .btn-info {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-warning {
+        background-color: #ffcc00;
+        border-color: #ffcc00;
+        color: #333;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .text-danger {
+        font-weight: bold;
+        color: #b71c1c;
+    }
+</style>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Models.Review>
+@{
+    ViewData["Title"] = "Reviews";
+}
+
+<head>
+    <style>
+        .review-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .review-card .card-title {
+                color: #007bff;
+            }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+
+        .container {
+            padding-top: 30px;
+        }
+
+        .no-reviews-message {
+            text-align: center;
+            font-size: 18px;
+            color: #6c757d;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<div class="container">
+    <h2>Reviews</h2>
+    @if (!Model.Any())
+    {
+        <div class="no-reviews-message">
+            No reviews found.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var review in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="review-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Rating: @review.Rating</h5>
+                            <p class="card-text"><strong>Comment:</strong> @review.Comment</p>
+                            <p class="card-text"><strong>User:</strong> @review.User.FullName</p>
+                            <p class="card-text"><strong>Product:</strong> @review.Product.Name</p>
+                            <a href="@Url.Action("Delete", new { id = review.Id })" class="btn btn-info">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

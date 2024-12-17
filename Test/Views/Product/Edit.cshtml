@@ -1,0 +1,88 @@
+﻿@model Product
+
+
+<h2 class="text-center mb-4" style="color: #007bff;">Edit Product</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data" class="p-4 border rounded shadow-lg" style="background-color: #f8f9fa;">
+    @Html.HiddenFor(model => model.Id)
+
+    <!-- Name -->
+    <div class="form-group mb-3">
+        <label asp-for="Name" class="form-label" style="color: #495057;"></label>
+        <input asp-for="Name" class="form-control" style="border-radius: 5px; border: 1px solid #ced4da;" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group mb-3">
+        <label asp-for="Description" class="form-label" style="color: #495057;"></label>
+        <textarea asp-for="Description" class="form-control" style="border-radius: 5px; border: 1px solid #ced4da;"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <!-- Price -->
+    <div class="form-group mb-3">
+        <label asp-for="Price" class="form-label" style="color: #495057;"></label>
+        <input asp-for="Price" class="form-control" style="border-radius: 5px; border: 1px solid #ced4da;" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <!-- Stock -->
+    <div class="form-group mb-3">
+        <label asp-for="Stock" class="form-label" style="color: #495057;"></label>
+        <input asp-for="Stock" class="form-control" style="border-radius: 5px; border: 1px solid #ced4da;" />
+        <span asp-validation-for="Stock" class="text-danger"></span>
+    </div>
+
+    <!-- Image -->
+    <div class="mb-3">
+        <label for="ProductsImgUrl" class="form-label">Product Image</label>
+        <input type="file" class="form-control" id="ProductsImgUrl" name="ImageUrl" onchange="previewImage(event)">
+
+        <!-- Image preview -->
+        <img id="imagePreview" 
+             src="~/images/@(string.IsNullOrEmpty(Model.ImageUrl) ? "default-placeholder.png" : Model.ImageUrl)" 
+             alt="Image Preview" 
+             style="margin-top: 10px; max-width: 300px;">
+    </div>
+
+    <div class="mb-3">
+        <label for="ProductsCategory" class="form-label">Product Category</label>
+        <select class="form-select" name="CategoryId">
+            @foreach (var item in ViewBag.categories)
+            {
+
+                if (item.Id == Model.CategoryId)
+
+                {
+                    <option value="@item.Id" selected>@item.Name</option>
+                }
+
+                else
+
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+
+
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary btn-block" style="border-radius: 5px; background-color: #007bff; color: white; font-size: 1.1rem; margin-top: 15px;">Update</button>
+</form>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('imagePreview');
+            output.src = reader.result;
+            output.style.display = 'block';
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>

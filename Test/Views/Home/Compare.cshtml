@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Product>
+
+<h2>Product Comparison</h2>
+
+@if (Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    @foreach (var product in Model)
+                    {
+                        <th>@product.Name</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Image</td>
+                    @foreach (var product in Model)
+                    {
+                        <td>
+                            <img src="~/Images/@(string.IsNullOrEmpty(product.ImageUrl) ? "placeholder.jpg" : product.ImageUrl)"
+                                 alt="@product.Name"
+                                 class="product-image">
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    @foreach (var product in Model)
+                    {
+                        <td>@product.Price.ToString("C")</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Rating</td>
+                    @foreach (var product in Model)
+                    {
+                        <td>@product.Rating</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    @foreach (var product in Model)
+                    {
+                        <td>@product.Description</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Is Best Seller?</td>
+                    @foreach (var product in Model)
+                    {
+                        <td>
+                            @if (product.IsBestSeller)
+                            {
+                                <span class="badge bg-warning text-dark">Best Seller</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Not a Best Seller</span>
+                            }
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    <td>Stock</td>
+                    @foreach (var product in Model)
+                    {
+                        <td>
+                            @if (product.Stock > 0)
+                            {
+                                <span class="text-success">@product.Stock available</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Out of Stock</span>
+                            }
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    <td>Sales No:</td>
+                    @foreach (var product in Model)
+                    {
+                        <td>@product.SalesCount</td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p>No products available for comparison.</p>
+}
+
+<style>
+    .product-image {
+        width: 100px; /* Set the width to the desired size */
+        height: auto; /* Maintain the aspect ratio */
+        object-fit: contain; /* Ensures the image does not get cropped */
+        background-color: #f8f9fa; /* Optional: a light background for transparency effect */
+    }
+</style>

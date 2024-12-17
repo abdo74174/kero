@@ -1,0 +1,173 @@
+﻿@model IEnumerable<Discount>
+
+@{
+    ViewData["Title"] = "Discounts List";
+}
+
+<style>
+    body {
+        background-color: #f4f7fc;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h1 {
+        color: #3e64a5;
+        font-size: 36px;
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .btn {
+        border-radius: 25px;
+        padding: 12px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 10px;
+        text-transform: uppercase;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        color: #fff;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        color: #fff;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .table thead {
+            background-color: #f1f1f1;
+            color: #3e64a5;
+            font-weight: bold;
+        }
+
+    .table-striped tbody tr:nth-child(odd) {
+        background-color: #fafbfc;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f1f3f5;
+    }
+
+    .no-coupons {
+        padding: 20px;
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .dropdown-menu {
+        border-radius: 8px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown-item {
+        padding: 10px;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .dropdown-item:hover {
+            background-color: #f1f1f1;
+        }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-toggle::after {
+        content: none;
+    }
+
+    .table td .dropdown {
+        position: relative;
+    }
+
+        .table td .dropdown button {
+            padding: 8px 12px;
+        }
+
+</style>
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <!-- Back Button -->
+    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Back to Home</a>
+
+    @if (!Model.Any())
+    {
+        <div class="no-coupons">
+            <p>No coupons available at the moment. Please check back later!</p>
+        </div>
+    }
+    else
+    {
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Discount Rate</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Usage Limit</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var discount in Model)
+                {
+                    <tr>
+                        <td>@discount.Name</td>
+                        <td>@discount.DiscountRate%</td>
+                        <td>@discount.StartDate.ToShortDateString()</td>
+                        <td>@discount.EndDate.ToShortDateString()</td>
+                        <td>@discount.CouponCounter</td>
+                      
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

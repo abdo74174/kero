@@ -1,0 +1,11 @@
+﻿@model Models.ViewModel.DeleteUserViewModel
+
+<h2>Delete User</h2>
+<p>Are you sure you want to delete the user <strong>@Model.FullName</strong> (Username: @Model.UserName)?</p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <!-- Hidden field for UserId -->
+    <input type="hidden" asp-for="UserId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index", "User")" class="btn btn-secondary">Cancel</a>
+</form>

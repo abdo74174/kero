@@ -1,0 +1,46 @@
+﻿@model Models.Review
+@{
+    ViewData["Title"] = "Create Review";
+}
+
+<head>
+    <style>
+        .form-container {
+            padding-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .container {
+            padding-top: 30px;
+        }
+    </style>
+</head>
+
+<div class="container form-container">
+    <h2>Create Review</h2>
+    <form asp-action="Create" method="post">
+        <!-- Hidden fields for UserId and ProductId -->
+        <input type="hidden" name="UserId" value="@ViewBag.UserId" />
+        <input type="hidden" name="ProductId" value="@ViewBag.ProductId" />
+
+        <div class="form-group">
+            <label for="Rating" class="form-label">Rating</label>
+            <input type="number" name="Rating" class="form-control" min="1" max="5" value="@Model.Rating" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Comment" class="form-label">Comment</label>
+            <textarea name="Comment" class="form-control" rows="3">@Model.Comment</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+    </form>
+</div>
